@@ -1,0 +1,22 @@
+{% from time import ctime %}
+<html>
+   <head>
+      <title>{{ title }}</title>
+   </head>
+   <body>
+      <i>Пинг хоста {{ file_info[0] }} c периодичностью в {{ file_info[1] }} с</i><br>
+      <i>за последний час</i><br><br>
+      <table border="1" cellspacing="0" cellpadding="4">
+         <tr>
+            <td><b>Отклик</b></td>
+            <td><b>Дата</b></td>
+         </tr>
+         {% for i in db_info %}
+         <tr>
+            <td>{{ escape(str(i['ping_time'])) }} мс</td>
+            <td>{{ escape(ctime(i['time'])) }}</td>  
+         </tr>
+         {% end %}
+      </table>    
+   </body>
+</html>
